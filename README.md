@@ -1,29 +1,65 @@
-# STM32F4 Bare-Metal Project
+# STM32F411RE UART Bare-Metal Driver
 
-## Target
+This repository contains a **bare-metal UART driver implementation** for the STM32F411RE microcontroller (ARM Cortex-M4).  
+The project is built using **STM32CubeIDE** with **no HAL**—only CMSIS and device headers are used.
 
-- MCU: **STM32F411RE** (change this if different)
-- Toolchain: STM32CubeIDE (GCC)
+---
 
-## Dependencies
+##  Features
 
-This project **does not** include the STM32 device headers or HAL/CMSIS libraries.
+- Bare-metal UART initialization
+- TX/RX register-level configuration
+- GPIO configuration for UART pins
+- Clock configuration (RCC)
+- Simple TX routines (blocking)
+- Startup code and linker scripts included
 
-You must have **STM32CubeF4** installed. In CubeIDE, install the F4 firmware package and make sure the following include paths are added in the project settings:
+---
 
-- `<STM32CubeF4>/Drivers/CMSIS/Include`
-- `<STM32CubeF4>/Drivers/CMSIS/Device/ST/STM32F4xx/Include`
+##  Target & Toolchain
 
-The header `stm32f4xx.h` is taken from the STM32CubeF4 package (path above), not from this repository.
+| Item | Value |
+|------|-------|
+| **MCU** | STM32F411RE (Cortex-M4) |
+| **Clock** | 16 MHz HSI (or adjust as needed) |
+| **Toolchain** | STM32CubeIDE (GCC ARM) |
+| **Language** | C (bare metal, register level) |
 
-## Building
+---
 
-1. Open the project in **STM32CubeIDE**.
-2. Confirm the correct MCU and clock configuration.
-3. Ensure the include paths above are configured.
-4. Build the project (Project → Build).
+##  Project Structure
+stm32f411re_uart/
+│── Inc/ # Header files
+│── Src/ # Source files
+│── Startup/ # Startup code for STM32F411RE
+│── .project # STM32CubeIDE metadata
+│── .cproject # STM32CubeIDE metadata
+│── .gitignore # Ignoring build outputs
+│── README.md # This file
 
-## Notes
 
-- Build folders (`Debug`, `Release`) are intentionally ignored by git.
-- Only source (`Src`, `Inc`, `Startup`) and project files are tracked.
+---
+
+## 📚 Dependencies (IMPORTANT)
+
+This project depends on the **STM32CubeF4 Firmware Package**, which provides the CMSIS and device headers, including:
+
+- `stm32f4xx.h`
+- `system_stm32f4xx.h`
+- CMSIS core files (e.g., `core_cm4.h`)
+
+These files are **not stored in the repository**.
+
+### ✔ Ensure STM32CubeF4 Firmware Package is installed
+
+In STM32CubeIDE:
+
+Help → Manage Embedded Software Packages
+Install
+
+Right-click Project → Properties -> Paths and Symbols -> Add -> File System
+\headers\CMSIS\Include
+\headers\CMSIS\Device\ST\STM32F4xx\Include
+
+
+
