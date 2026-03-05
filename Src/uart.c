@@ -1,6 +1,5 @@
 #include "uart.h"
-char uart2_read(void);
-void uart2_write(int charecter);
+
 int uart_print(int charecter)
 {
 	uart2_write(charecter);
