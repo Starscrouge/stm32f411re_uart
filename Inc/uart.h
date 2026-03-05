@@ -21,6 +21,8 @@
 #define SR_RXNE (1U<<5)
 #define CR1_TXNIE (1U<<7)
 #define SR_TXE (1U<<7)
+char uart2_read(void);
+void uart2_write(int charecter);
 static uint16_t compute_uart(uint32_t periphclk,uint32_t baudrate);
 static void uart_set_baud(USART_TypeDef*USARTx,uint32_t periphclk,uint32_t baudrate);
 void uart2_tx_init(void);
