@@ -39,7 +39,7 @@ static void uart_callback(void){
 
 void USART2_IRQHandler(void){
 	/*check if rxne is set*/
-	if(USART2->SR & SR_TXE){
+	if(USART2->SR & SR_RXNE){
 
 		uart_callback();//interrupt service routine
 
